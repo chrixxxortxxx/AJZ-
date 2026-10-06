@@ -1,0 +1,20 @@
+# AJZ Digital Calling Card
+
+A static site with no build step. Upload this folder to any static host (Netlify, Vercel, GitHub Pages, Cloudflare Pages, or your own hosting) under a short path like `yourdomain.com/ajz/`.
+
+## Before going live
+
+1. **Set the real URL.** In `index.html`, replace `https://yourdomain.com/ajz/` in the `og:` and `twitter:` meta tags with the real address. Facebook and Messenger only show the preview image when the URL is absolute.
+2. **Add photos (optional).** Put compressed JPGs (about 1200px wide, under 250 KB each) in `images/` as `work-1.jpg` … `work-6.jpg`, and update their `alt` text. Missing photos are hidden automatically. With no photos, the section links to Facebook instead.
+3. **Add the official logo (optional).** In `index.html`, swap the `AJZ` placeholder for the `<img>` line in the comment there.
+4. **Use HTTPS.** Offline support, clipboard copy and sharing all require it.
+
+## NFC card and QR code
+
+- Write the card URL (for example `https://yourdomain.com/ajz/`) to the NFC tag as a **URI / URL record**. Any NFC writer app works, such as NXP TagWriter or NFC Tools. Phones open it without a special app.
+- After deploying, open the live site and tap **Download QR Code** to get a 1200px PNG for printing. The QR code always encodes the URL the page is served from, so open the final domain before downloading.
+- The QR code and NFC tag only hold the URL. Changes to the page appear without reprinting the cards.
+
+## Updating later
+
+When you change `index.html`, bump `CACHE` in `sw.js` (for example `ajz-card-v2`) so returning visitors get fresh files. Pages load network-first, so online visitors always see the latest version.

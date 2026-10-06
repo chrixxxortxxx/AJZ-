@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#111111"/>
+  <rect x="40" y="40" width="432" height="432" rx="84" fill="none" stroke="#c9a25e" stroke-width="8"/>
+  <text x="256" y="300" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-weight="800" font-size="150" letter-spacing="10" fill="#ffffff">AJZ</text>
+</svg>

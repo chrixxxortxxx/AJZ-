@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AJZ Signages Making Services | Digital Printing Service</title>
+<meta name="description" content="AJZ Signages Making Services — Digital Printing Service in Belisario Village, Agdao, Davao City. Call 0935 106 9803.">
+<meta name="theme-color" content="#111111">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph / sharing. After deploying, replace https://yourdomain.com/ajz/ with the real URL
+     (Facebook/Messenger need an absolute og:image URL). -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AJZ Signages Making Services">
+<meta property="og:description" content="Digital Printing Service · Belisario Village, Agdao, Davao City · Call 0935 106 9803">
+<meta property="og:url" content="https://yourdomain.com/ajz/">
+<meta property="og:image" content="https://yourdomain.com/ajz/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AJZ Signages Making Services — Digital Printing Service">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AJZ Signages Making Services">
+<meta name="twitter:description" content="Digital Printing Service · Agdao, Davao City">
+<meta name="twitter:image" content="https://yourdomain.com/ajz/og-image.png">
+
+<!-- App-like experience (installation optional) -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AJZ Card">
+<meta name="format-detection" content="telephone=no">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AJZ Signages Making Services",
+  "description": "Digital Printing Service",
+  "telephone": "+639351069803",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Belisario Village, Agdao",
+    "addressLocality": "Davao City",
+    "addressRegion": "Davao del Sur",
+    "addressCountry": "PH"
+  },
+  "sameAs": ["https://www.facebook.com/sonjin.ced"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.1", "reviewCount": "10" }
+}
+</script>
+
+<style>
+:root {
+  --ink: #111111;
+  --charcoal: #1c1c1e;
+  --charcoal-2: #2a2a2d;
+  --line-dark: rgba(255,255,255,.14);
+  --paper: #ffffff;
+  --mist: #f4f3f1;
+  --line: #e6e4e0;
+  --muted: #5f5d59;
+  --muted-dark: #b9b6b0;
+  --accent: #c9a25e;
+  --accent-strong: #b88d45;
+  --accent-ink: #8a6424;
+  --backdrop: #e7e4df;
+  --radius: 16px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--backdrop);
+  background-image: radial-gradient(circle at 20% 0%, #f2efea 0, transparent 50%),
+                    radial-gradient(circle at 100% 100%, #d9d5ce 0, transparent 45%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+svg.i { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+svg.i.fill { fill: currentColor; stroke: none; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 10px; }
+
+.skip {
+  position: absolute; left: 12px; top: -60px; z-index: 50;
+  background: var(--accent); color: var(--ink); padding: 10px 14px; border-radius: 10px;
+  font-weight: 700; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Card shell ---------- */
+.card {
+  max-width: 460px;
+  margin: 0 auto;
+  background: var(--paper);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  animation: rise .5s ease-out both;
+}
+@media (min-width: 560px) {
+  .card {
+    margin: 40px auto;
+    min-height: 0;
+    border-radius: 28px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 24px 60px -12px rgba(0,0,0,.28);
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--ink);
+  background-image: linear-gradient(160deg, #1e1e20 0%, #0d0d0d 70%);
+  color: #fff;
+  padding: calc(36px + env(safe-area-inset-top)) 20px 24px;
+  text-align: center;
+  position: relative;
+}
+.hero::after {
+  content: ""; position: absolute; left: 20px; right: 20px; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,94,.5), transparent);
+}
+.logo {
+  width: 104px; height: 104px; margin: 0 auto 18px;
+  border-radius: 28px;
+  display: grid; place-items: center;
+  background: linear-gradient(145deg, #262628, #151516);
+  border: 1.5px solid rgba(201,162,94,.65);
+  box-shadow: 0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+  animation: fade .6s .1s ease-out both;
+}
+.logo span {
+  font-size: 34px; font-weight: 800; letter-spacing: 3px; color: #fff;
+  padding-left: 3px;
+}
+.logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; }
+.hero h1 {
+  margin: 0; font-size: 25px; line-height: 1.2; font-weight: 750; letter-spacing: -.2px;
+  text-wrap: balance;
+}
+.tagline {
+  margin: 6px 0 0; color: var(--accent); font-size: 13px; font-weight: 700;
+  letter-spacing: 2.4px; text-transform: uppercase;
+}
+.meta {
+  margin: 14px 0 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  font-size: 14px; color: var(--muted-dark);
+}
+.meta li {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px; border: 1px solid var(--line-dark); border-radius: 999px;
+}
+.meta svg.i { width: 15px; height: 15px; }
+.meta .star { color: var(--accent); }
+.meta strong { color: #fff; font-weight: 650; }
+
+/* ---------- Buttons ---------- */
+.actions { margin-top: 22px; display: grid; gap: 10px; }
+.btn {
+  -webkit-appearance: none; appearance: none;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; width: 100%; padding: 0 18px;
+  border-radius: var(--radius); border: 1px solid transparent;
+  font: inherit; font-size: 15px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: transform .12s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.btn:active { transform: scale(.975); }
+.btn-call {
+  min-height: 64px;
+  background: var(--accent); color: var(--ink);
+  box-shadow: 0 8px 24px -8px rgba(201,162,94,.65);
+  flex-direction: row;
+}
+.btn-call:hover { background: #d4ae6b; }
+.btn-call .stack { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+.btn-call .num { font-size: 13px; font-weight: 600; letter-spacing: .5px; text-transform: none; opacity: .8; }
+.btn-call svg.i { width: 22px; height: 22px; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light:hover { background: #f1efeb; }
+.btn-ghost { background: var(--charcoal); color: #fff; border-color: var(--line-dark); }
+.btn-ghost:hover { background: var(--charcoal-2); border-color: rgba(255,255,255,.28); }
+.row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.row3 .btn {
+  flex-direction: column; gap: 5px; min-height: 68px; padding: 8px 4px;
+  font-size: 11.5px; letter-spacing: .5px;
+}
+
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #2b2b2b; }
+.btn-outline { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn-outline:hover { border-color: #c9c5be; background: var(--mist); }
+
+/* ---------- Sections ---------- */
+main section { padding: 30px 20px; border-top: 1px solid var(--line); }
+main section:first-of-type { border-top: 0; }
+.eyebrow {
+  margin: 0 0 16px; font-size: 12px; font-weight: 800; letter-spacing: 2.4px;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--accent); border-radius: 2px; }
+
+/* Services */
+.services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.services li {
+  background: var(--mist); border-radius: 14px; padding: 16px 14px;
+  border: 1px solid transparent;
+}
+.services .ico {
+  width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: var(--accent);
+  display: grid; place-items: center; margin-bottom: 10px;
+}
+.services .ico svg.i { width: 18px; height: 18px; }
+.services h3 { margin: 0; font-size: 14px; font-weight: 750; letter-spacing: .2px; }
+.services p { margin: 3px 0 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.gallery button {
+  display: block; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden;
+  aspect-ratio: 1 / 1; background: var(--mist); cursor: zoom-in;
+}
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.gallery button:hover img { transform: scale(1.04); }
+.gallery-empty {
+  margin: 0; padding: 22px 16px; border: 1.5px dashed var(--line); border-radius: 14px;
+  text-align: center; color: var(--muted); font-size: 14px;
+}
+.gallery-empty a { font-weight: 700; color: var(--ink); }
+
+/* Reviews */
+.rating {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+}
+.rating .score { font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: -1px; }
+.stars { display: flex; gap: 2px; color: var(--accent); }
+.stars svg.i { width: 16px; height: 16px; }
+.stars .half { color: #d9d5ce; }
+.rating small { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+.reviews { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.reviews blockquote {
+  margin: 0; padding: 14px 16px; background: var(--mist); border-radius: 14px;
+  border-left: 3px solid var(--accent);
+}
+.reviews p { margin: 0; font-size: 15px; }
+.reviews cite { display: block; margin-top: 6px; font-style: normal; font-size: 13px; color: var(--muted); font-weight: 600; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
+.tags li { font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; background: var(--ink); color: #fff; letter-spacing: .3px; }
+
+/* Contact */
+.info { margin: 0 0 16px; padding: 0; list-style: none; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.info li + li { border-top: 1px solid var(--line); }
+.info a, .info .static {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px; text-decoration: none; min-height: 60px;
+}
+.info a:hover { background: var(--mist); }
+.info .ico {
+  width: 38px; height: 38px; border-radius: 11px; background: var(--mist); color: var(--ink);
+  display: grid; place-items: center; flex: none;
+}
+.info .label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: var(--muted); }
+.info .value { display: block; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.info .chev { margin-left: auto; color: #a8a49d; }
+.info .open { font-size: 13px; font-weight: 800; letter-spacing: 1.2px; }
+.open::before { content: ""; display: inline-block; vertical-align: 1px; margin-right: 8px; width: 8px; height: 8px; border-radius: 50%; background: #2f9e5b; box-shadow: 0 0 0 3px rgba(47,158,91,.18); }
+.note { display: block; font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+.contact-actions { display: grid; gap: 10px; }
+
+/* QR */
+.qr-wrap { text-align: center; }
+.qr-box {
+  width: 228px; height: 228px; margin: 0 auto; padding: 14px; background: #fff;
+  border: 1px solid var(--line); border-radius: 20px; display: grid; place-items: center;
+}
+.qr-box canvas { width: 200px; height: 200px; image-rendering: pixelated; }
+.qr-url { margin: 12px 0 16px; font-size: 13px; color: var(--muted); word-break: break-all; }
+.qr-wrap .btn { max-width: 300px; margin: 0 auto; }
+.nfc {
+  display: flex; gap: 12px; align-items: center; text-align: left;
+  margin: 20px 0 0; padding: 14px 16px; border-radius: 14px; background: var(--mist);
+  font-size: 14px; color: var(--muted);
+}
+.nfc svg.i { color: var(--ink); width: 26px; height: 26px; }
+
+/* Footer */
+footer {
+  background: var(--ink); color: #fff; text-align: center;
+  padding: 28px 20px calc(28px + env(safe-area-inset-bottom));
+}
+footer .name { margin: 0; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; font-size: 14px; }
+footer .tag { margin: 4px 0 14px; color: var(--accent); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+footer small { color: #8f8c86; font-size: 12px; }
+
+/* Toast */
+.toast {
+  position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 60;
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 999px;
+  font-size: 14px; font-weight: 700; display: flex; gap: 8px; align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3); transition: opacity .2s ease, transform .2s ease;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast svg.i { color: var(--accent); width: 18px; height: 18px; }
+
+/* Lightbox */
+.lightbox {
+  border: 0; padding: 0; margin: 0; max-width: none; max-height: none;
+  width: 100vw; height: 100vh; height: 100dvh; background: rgba(8,8,8,.96); color: #fff;
+}
+.lightbox[open] { display: grid; place-items: center; animation: fade .2s ease-out; }
+.lightbox::backdrop { background: rgba(0,0,0,.9); }
+.lightbox img { max-width: 94vw; max-height: 80vh; max-height: 80dvh; object-fit: contain; border-radius: 8px; transition: opacity .2s ease; }
+.lb-btn {
+  position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08); color: #fff; display: grid; place-items: center; cursor: pointer;
+}
+.lb-btn:hover { background: rgba(255,255,255,.16); }
+.lb-close { top: calc(14px + env(safe-area-inset-top)); right: 14px; }
+.lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lb-count { position: absolute; bottom: calc(18px + env(safe-area-inset-bottom)); left: 0; right: 0; text-align: center; font-size: 13px; color: #bbb; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 350px) {
+  .hero h1 { font-size: 22px; }
+  .row3 .btn { font-size: 10.5px; }
+  .services { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contact">Skip to contact details</a>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-sign" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="12" rx="2"/><path d="M8 21l4-6 4 6M7 8h10M7 11h6"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M6 8.3a6 6 0 0 1 0 7.4"/><path d="M10 6a10 10 0 0 1 0 12"/><path d="M14 4a14 14 0 0 1 0 16"/><path d="M18 2a18 18 0 0 1 0 20"/></symbol>
+</svg>
+
+<div class="card">
+  <header class="hero">
+    <div class="logo" role="img" aria-label="AJZ logo placeholder">
+      <!-- Replace with the official logo when available:
+           <img src="images/logo.jpg" alt="AJZ Signages Making Services logo" width="104" height="104"> -->
+      <span aria-hidden="true">AJZ</span>
+    </div>
+    <h1>AJZ Signages Making Services</h1>
+    <p class="tagline">Digital Printing Service</p>
+    <ul class="meta">
+      <li><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Agdao, Davao City</li>
+      <li><svg class="i fill star" aria-hidden="true"><use href="#i-star"/></svg><span><strong>4.1</strong> · 10 Reviews</span></li>
+    </ul>
+
+    <nav class="actions" aria-label="Contact actions">
+      <a class="btn btn-call" href="tel:+639351069803" aria-label="Call AJZ Signages Making Services at 0935 106 9803">
+        <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span class="stack"><span>Call Now</span><span class="num">0935 106 9803</span></span>
+      </a>
+      <button class="btn btn-light" type="button" data-action="vcard" aria-label="Save AJZ Signages Making Services to your contacts">
+        <svg class="i" aria-hidden="true"><use href="#i-user"/></svg>Save Contact
+      </button>
+      <div class="row3">
+        <a class="btn btn-ghost" href="https://www.facebook.com/sonjin.ced" target="_blank" rel="noopener" aria-label="Open AJZ Signages Making Services on Facebook (opens in a new tab)">
+          <svg class="i fill" aria-hidden="true"><use href="#i-fb"/></svg>Facebook
+        </a>
+        <a class="btn btn-ghost js-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=AJZ%20Signages%20Making%20Services%2C%20Belisario%20Village%2C%20Agdao%2C%20Davao%20City" target="_blank" rel="noopener" aria-label="Get directions to AJZ Signages Making Services in Google Maps (opens in a new tab)">
+          <svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Directions
+        </a>
+        <button class="btn btn-ghost" type="button" data-action="share" aria-label="Share the AJZ Signages Making Services digital card">
+          <svg class="i" aria-hidden="true"><use href="#i-share"/></svg>Share
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="h-services">
+      <h2 class="eyebrow" id="h-services">What we do</h2>
+      <ul class="services">
+        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-sign"/></svg></div><h3>Signage</h3><p>Custom signage services.</p></li>
+        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-print"/></svg></div><h3>Digital Printing</h3><p>Digital printing services.</p></li>
+        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-brief"/></svg></div><h3>Business Materials</h3><p>Printing and visual materials for businesses.</p></li>
+        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-pen"/></svg></div><h3>Custom Projects</h3><p>Custom printing and signage requests.</p></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-work" id="work">
+      <h2 class="eyebrow" id="h-work">Our work</h2>
+      <!-- Add AJZ photos to the images/ folder as work-1.jpg … work-6.jpg (≈1200px wide, compressed).
+           Missing photos are hidden automatically. Update alt text to describe each photo. -->
+      <ul class="gallery" id="gallery">
+        <li><button type="button" aria-label="View photo 1 full screen"><img src="images/work-1.jpg" alt="AJZ Signages Making Services work sample 1" loading="lazy" decoding="async" width="600" height="600"></button></li>
+        <li><button type="button" aria-label="View photo 2 full screen"><img src="images/work-2.jpg" alt="AJZ Signages Making Services work sample 2" loading="lazy" decoding="async" width="600" height="600"></button></li>
+        <li><button type="button" aria-label="View photo 3 full screen"><img src="images/work-3.jpg" alt="AJZ Signages Making Services work sample 3" loading="lazy" decoding="async" width="600" height="600"></button></li>
+        <li><button type="button" aria-label="View photo 4 full screen"><img src="images/work-4.jpg" alt="AJZ Signages Making Services work sample 4" loading="lazy" decoding="async" width="600" height="600"></button></li>
+        <li><button type="button" aria-label="View photo 5 full screen"><img src="images/work-5.jpg" alt="AJZ Signages Making Services work sample 5" loading="lazy" decoding="async" width="600" height="600"></button></li>
+        <li><button type="button" aria-label="View photo 6 full screen"><img src="images/work-6.jpg" alt="AJZ Signages Making Services work sample 6" loading="lazy" decoding="async" width="600" height="600"></button></li>
+      </ul>
+      <p class="gallery-empty" id="gallery-empty" hidden>
+        See our latest projects on <a href="https://www.facebook.com/sonjin.ced" target="_blank" rel="noopener">Facebook</a>.
+      </p>
+    </section>
+
+    <section aria-labelledby="h-reviews">
+      <h2 class="eyebrow" id="h-reviews">Customer reviews</h2>
+      <div class="rating">
+        <span class="score">4.1</span>
+        <div>
+          <div class="stars" role="img" aria-label="Rated 4.1 out of 5 stars">
+            <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
+            <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
+            <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
+            <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
+            <svg class="i fill half" aria-hidden="true"><use href="#i-star"/></svg>
+          </div>
+          <small>10 Google Reviews</small>
+        </div>
+      </div>
+      <ul class="reviews">
+        <li><blockquote><p>“Very Legit and Affordable, highly recommended!”</p><cite>— Roxelle Bacasmo</cite></blockquote></li>
+        <li><blockquote><p>“Very affordable, Quality is good, and highly recommended.”</p><cite>— JANDY OTERO</cite></blockquote></li>
+        <li><blockquote><p>“Affordable, legit and trusted shop ever!”</p><cite>— Kristine May Bacasmo</cite></blockquote></li>
+      </ul>
+      <ul class="tags" aria-label="What customers say">
+        <li>Affordable</li><li>Quality</li><li>Legit</li><li>Trusted</li><li>Highly recommended</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-contact" id="contact">
+      <h2 class="eyebrow" id="h-contact">Contact</h2>
+      <ul class="info">
+        <li>
+          <a href="tel:+639351069803" aria-label="Phone: 0935 106 9803. Tap to call AJZ Signages Making Services">
+            <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <span><span class="label">Phone</span><span class="value">0935 106 9803</span></span>
+            <svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=AJZ%20Signages%20Making%20Services%2C%20Belisario%20Village%2C%20Agdao%2C%20Davao%20City" target="_blank" rel="noopener" aria-label="Location: Belisario Village, Agdao, Davao City, Davao del Sur. Open in Google Maps (new tab)">
+            <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <span><span class="label">Location</span><span class="value">Belisario Village, Agdao,<br>Davao City, Davao del Sur</span></span>
+            <svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/sonjin.ced" target="_blank" rel="noopener" aria-label="Facebook: AJZ Signages Making Services. Opens in a new tab">
+            <span class="ico"><svg class="i fill" aria-hidden="true"><use href="#i-fb"/></svg></span>
+            <span><span class="label">Facebook</span><span class="value">AJZ Signages Making Services</span></span>
+            <svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg>
+          </a>
+        </li>
+        <li>
+          <div class="static">
+            <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <span><span class="label">Hours</span><span class="value open">OPEN · CLOSES 10 PM</span><span class="note">Please contact us to confirm operating hours.</span></span>
+          </div>
+        </li>
+      </ul>
+      <div class="contact-actions">
+        <a class="btn btn-dark" href="tel:+639351069803" aria-label="Call AJZ Signages Making Services now">
+          <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call Now
+        </a>
+        <a class="btn btn-outline" href="https://www.facebook.com/sonjin.ced" target="_blank" rel="noopener" aria-label="Message AJZ Signages Making Services on Facebook (opens in a new tab)">
+          <svg class="i fill" aria-hidden="true" style="color:#1877f2"><use href="#i-fb"/></svg>Facebook
+        </a>
+        <a class="btn btn-outline js-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=AJZ%20Signages%20Making%20Services%2C%20Belisario%20Village%2C%20Agdao%2C%20Davao%20City" target="_blank" rel="noopener" aria-label="Get directions to AJZ Signages Making Services (opens Google Maps in a new tab)">
+          <svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Get Directions
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-qr" class="qr-wrap">
+      <h2 class="eyebrow" id="h-qr" style="justify-content:center">Scan to share</h2>
+      <div class="qr-box"><canvas id="qr" width="200" height="200" role="img" aria-label="QR code linking to this digital calling card"></canvas></div>
+      <p class="qr-url" id="qr-url"></p>
+      <button class="btn btn-outline" type="button" data-action="qr-download" aria-label="Download QR code for the AJZ digital card">
+        <svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Download QR Code
+      </button>
+      <p class="nfc">
+        <svg class="i" aria-hidden="true"><use href="#i-nfc"/></svg>
+        <span>Tap your phone on the card to instantly view AJZ's digital contact information.</span>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="name">AJZ Signages Making Services</p>
+    <p class="tag">Digital Printing Service</p>
+    <small>© 2026 AJZ Signages Making Services</small>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span></span></div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+  <img id="lb-img" alt="">
+  <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="Close photo viewer"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <button class="lb-btn lb-prev" type="button" data-lb="prev" aria-label="Previous photo"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+  <button class="lb-btn lb-next" type="button" data-lb="next" aria-label="Next photo"><svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+  <p class="lb-count" id="lb-count" aria-live="polite"></p>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  var BIZ = {
+    name: 'AJZ Signages Making Services',
+    category: 'Digital Printing Service',
+    tel: '+639351069803',
+    street: 'Belisario Village, Agdao',
+    city: 'Davao City',
+    region: 'Davao del Sur',
+    country: 'Philippines',
+    facebook: 'https://www.facebook.com/sonjin.ced'
+  };
+
+  // The card's own URL (no query string or hash, so QR/NFC/shared links stay clean).
+  var CARD_URL = location.origin + location.pathname.replace(/index\.html$/, '');
+  var isWeb = /^https?:$/.test(location.protocol);
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function notify(msg) {
+    toast.querySelector('span').textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+
+  /* ---------- vCard ---------- */
+  function esc(v) {
+    return String(v).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+  }
+  function fold(line) {
+    // RFC 6350/2426: lines longer than 75 octets are folded with CRLF + space.
+    var out = '';
+    while (line.length > 75) { out += line.slice(0, 75) + '\r\n '; line = line.slice(75); }
+    return out + line;
+  }
+  function buildVCard() {
+    var lines = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:;' + esc(BIZ.name) + ';;;',
+      'FN:' + esc(BIZ.name),
+      'ORG:' + esc(BIZ.name),
+      'TITLE:' + esc(BIZ.category),
+      'TEL;TYPE=CELL,VOICE:' + BIZ.tel,
+      'ADR;TYPE=WORK:;;' + esc(BIZ.street) + ';' + esc(BIZ.city) + ';' + esc(BIZ.region) + ';;' + esc(BIZ.country),
+      'item1.URL:' + (isWeb ? CARD_URL : BIZ.facebook),
+      'item1.X-ABLabel:Digital Card',
+      'item2.URL:' + BIZ.facebook,
+      'item2.X-ABLabel:Facebook',
+      'X-SOCIALPROFILE;TYPE=facebook:' + BIZ.facebook,
+      'NOTE:' + esc(BIZ.category + ' · Facebook: ' + BIZ.facebook),
+      'END:VCARD'
+    ];
+    return lines.map(fold).join('\r\n') + '\r\n';
+  }
+  function saveContact() {
+    var blob = new Blob([buildVCard()], { type: 'text/vcard;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'AJZ-Signages-Making-Services.vcf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    notify('Contact file ready — open it to add');
+  }
+
+  /* ---------- Share ---------- */
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+      ta.remove();
+    });
+  }
+  function share() {
+    var data = { title: BIZ.name, text: BIZ.category, url: CARD_URL };
+    if (navigator.share) {
+      navigator.share(data).catch(function (err) {
+        if (err && err.name !== 'AbortError') fallbackCopy();
+      });
+    } else {
+      fallbackCopy();
+    }
+  }
+  function fallbackCopy() {
+    copyText(CARD_URL).then(function () { notify('Link copied!'); }, function () { notify(CARD_URL); });
+  }
+
+  /* ---------- Gallery + lightbox ---------- */
+  var gallery = document.getElementById('gallery');
+  var items = Array.prototype.slice.call(gallery.querySelectorAll('li'));
+  function checkEmpty() {
+    if (!gallery.querySelector('li:not([hidden])')) {
+      gallery.hidden = true;
+      document.getElementById('gallery-empty').hidden = false;
+    }
+  }
+  // Hide any photo slot whose image file doesn't exist yet.
+  items.forEach(function (li) {
+    var img = li.querySelector('img');
+    function fail() { li.hidden = true; checkEmpty(); }
+    if (img.complete && img.naturalWidth === 0 && img.currentSrc) fail();
+    else img.addEventListener('error', fail);
+  });
+
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCount = document.getElementById('lb-count');
+  var current = 0, lastFocus = null;
+  function visible() { return items.filter(function (li) { return !li.hidden; }); }
+  function show(i) {
+    var list = visible();
+    if (!list.length) return;
+    current = (i + list.length) % list.length;
+    var src = list[current].querySelector('img');
+    lbImg.src = src.currentSrc || src.src;
+    lbImg.alt = src.alt;
+    lbCount.textContent = (current + 1) + ' / ' + list.length;
+    var single = list.length < 2;
+    lb.querySelector('.lb-prev').hidden = single;
+    lb.querySelector('.lb-next').hidden = single;
+  }
+  gallery.addEventListener('click', function (e) {
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    lastFocus = btn;
+    show(visible().indexOf(btn.closest('li')));
+    if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
+  });
+  function closeLb() { if (lb.close) lb.close(); else lb.removeAttribute('open'); }
+  lb.addEventListener('close', function () { if (lastFocus) lastFocus.focus(); });
+  lb.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-lb]');
+    if (b) {
+      var a = b.getAttribute('data-lb');
+      if (a === 'close') closeLb(); else show(current + (a === 'next' ? 1 : -1));
+    } else if (e.target === lb) closeLb();
+  });
+  lb.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') show(current + 1);
+    if (e.key === 'ArrowLeft') show(current - 1);
+  });
+  var touchX = null;
+  lb.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+
+  /* ---------- QR code (library loaded lazily, only when the section scrolls into view) ---------- */
+  var qrCanvas = document.getElementById('qr');
+  var qrReady = false;
+  document.getElementById('qr-url').textContent = CARD_URL.replace(/^https?:\/\//, '');
+
+  function drawQR(canvas, size) {
+    var qr = window.qrcode(0, 'M');
+    qr.addData(CARD_URL);
+    qr.make();
+    var n = qr.getModuleCount();
+    var quiet = 4; // standard quiet zone, in modules
+    var cell = Math.floor(size / (n + quiet * 2)) || 1;
+    var dim = cell * (n + quiet * 2);
+    canvas.width = dim; canvas.height = dim;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, dim, dim);
+    ctx.fillStyle = '#000000';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) {
+      if (qr.isDark(r, c)) ctx.fillRect((c + quiet) * cell, (r + quiet) * cell, cell, cell);
+    }
+  }
+  function loadQR(cb) {
+    if (window.qrcode) return cb();
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+    s.async = true;
+    s.onload = cb;
+    s.onerror = function () { notify('QR code needs an internet connection'); };
+    document.head.appendChild(s);
+  }
+  function renderQR() {
+    if (qrReady) return;
+    loadQR(function () { drawQR(qrCanvas, 400); qrReady = true; });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (en) { return en.isIntersecting; })) { renderQR(); io.disconnect(); }
+    }, { rootMargin: '300px' });
+    io.observe(qrCanvas);
+  } else {
+    renderQR();
+  }
+  function downloadQR() {
+    loadQR(function () {
+      var big = document.createElement('canvas');
+      drawQR(big, 1200);
+      var a = document.createElement('a');
+      a.download = 'AJZ-Digital-Card-QR.png';
+      a.href = big.toDataURL('image/png');
+      document.body.appendChild(a); a.click(); a.remove();
+      notify('QR code downloaded');
+    });
+  }
+
+  /* ---------- Action wiring ---------- */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-action]');
+    if (!el) return;
+    var act = el.getAttribute('data-action');
+    if (act === 'vcard') saveContact();
+    else if (act === 'share') share();
+    else if (act === 'qr-download') downloadQR();
+  });
+
+  /* ---------- Offline support (only on http(s), never required) ---------- */
+  if ('serviceWorker' in navigator && isWeb) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
