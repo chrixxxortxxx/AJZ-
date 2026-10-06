@@ -302,6 +302,9 @@ main section:first-of-type { border-top: 0; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
 .tags li { font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; background: var(--ink); color: #fff; letter-spacing: .3px; }
 
+.review-cta { margin-top: 18px; padding: 16px; border-radius: 16px; border: 1px solid var(--line); text-align: center; }
+.review-cta p { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+
 /* Contact */
 .info { margin: 0 0 16px; padding: 0; list-style: none; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
 .info li + li { border-top: 1px solid var(--line); }
@@ -553,6 +556,12 @@ footer small { color: #8f8c86; font-size: 12px; }
       <ul class="tags" aria-label="What customers say">
         <li>Affordable</li><li>Quality</li><li>Legit</li><li>Trusted</li><li>Highly recommended</li>
       </ul>
+      <div class="review-cta">
+        <p>Happy with your sign or print? Your review helps other customers find AJZ.</p>
+        <a class="btn btn-dark" href="https://search.google.com/local/writereview?placeid=ChIJmavX9bdt-TIRU0ZzeXdjrwc" target="_blank" rel="noopener" aria-label="Write a Google review for AJZ Signages Making Services (opens in a new tab)">
+          <svg class="i fill" aria-hidden="true" style="color:var(--accent)"><use href="#i-star"/></svg>Write a Google Review
+        </a>
+      </div>
     </section>
 
     <section aria-labelledby="h-contact" id="contact">
