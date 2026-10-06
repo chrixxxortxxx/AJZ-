@@ -1,7 +1,7 @@
 // Offline fallback for the AJZ digital card.
 // Pages: network first (so updates show immediately), cached copy when offline.
 // Static assets: cache first.
-const CACHE = 'ajz-card-v4';
+const CACHE = 'ajz-card-v5';
 const CORE = [
   './',
   'index.html',

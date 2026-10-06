@@ -687,7 +687,38 @@ footer small { color: #8f8c86; font-size: 12px; }
     ];
     return lines.map(fold).join('\r\n') + '\r\n';
   }
+  // No browser may write to the address book silently, so each platform gets the
+  // closest thing: its own pre-filled "new contact" screen, one tap from saved.
+  var ua = navigator.userAgent;
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var VCF_URL = 'ajz.vcf'; // static copy, served as text/vcard (see vercel.json)
+
+  function androidContactIntent() {
+    var x = function (v) { return encodeURIComponent(v); };
+    var fallback = isWeb ? new URL(VCF_URL, location.href).href : BIZ.facebook;
+    return 'intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;' +
+      'S.name=' + x(BIZ.name) + ';' +
+      'S.phone=' + x(BIZ.tel) + ';i.phone_type=2;' +
+      'S.company=' + x(BIZ.name) + ';' +
+      'S.job_title=' + x(BIZ.category) + ';' +
+      'S.postal=' + x(BIZ.street + ', ' + BIZ.city + ', ' + BIZ.region + ', ' + BIZ.country) + ';' +
+      'S.notes=' + x(BIZ.category + '\nFacebook: ' + BIZ.facebook + (isWeb ? '\nDigital card: ' + CARD_URL : '')) + ';' +
+      'S.browser_fallback_url=' + x(fallback) + ';end';
+  }
+
   function saveContact() {
+    if (isAndroid) {
+      // Opens the Contacts app's "Create contact" screen, already filled in.
+      location.href = androidContactIntent();
+      return;
+    }
+    if (isIOS && isWeb) {
+      // Safari shows the contact card with a "Create New Contact" button (no download).
+      location.href = VCF_URL;
+      return;
+    }
+    // Desktop: there is no contacts app to open, so offer the .vcf file.
     var blob = new Blob([buildVCard()], { type: 'text/vcard;charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -697,7 +728,7 @@ footer small { color: #8f8c86; font-size: 12px; }
     a.click();
     a.remove();
     setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
-    notify('Contact file ready — open it to add');
+    notify('Contact file downloaded — open it to add');
   }
 
   /* ---------- Share ---------- */
