@@ -6,8 +6,10 @@ ORG:AJZ Signages Making Services
 TITLE:Digital Printing Service
 TEL;TYPE=CELL,VOICE:+639351069803
 ADR;TYPE=WORK:;;Belisario Village\, Agdao;Davao City;Davao del Sur;;Philippines
-item1.URL:https://www.facebook.com/makerdavao
-item1.X-ABLabel:Facebook
+item1.URL:https://ajz-services.vercel.app/
+item1.X-ABLabel:Digital Card
+item2.URL:https://www.facebook.com/makerdavao
+item2.X-ABLabel:Facebook
 X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/makerdavao
 NOTE:Digital Printing Service
 END:VCARD
