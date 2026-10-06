@@ -1,15 +1,13 @@
-﻿// Offline fallback for the AJZ digital card.
+// Offline fallback for the AJZ digital card.
 // Pages: network first (so updates show immediately), cached copy when offline.
 // Static assets: cache first.
-const CACHE = 'ajz-card-v2';
+const CACHE = 'ajz-card-v3';
 const CORE = [
   './',
   'index.html',
   'manifest.webmanifest',
   'images/logo.jpg',
-  'icons/icon.svg',
-  'icons/icon-192.png',
-  'icons/icon-512.png',
+  'icons/favicon-32.png',
   'icons/apple-touch-icon.png'
 ];
 
