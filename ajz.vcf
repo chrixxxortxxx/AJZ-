@@ -10,6 +10,8 @@ item1.URL:https://ajz-services.vercel.app/
 item1.X-ABLabel:Digital Card
 item2.URL:https://www.facebook.com/makerdavao
 item2.X-ABLabel:Facebook
+item3.URL:https://www.facebook.com/sonjin.ced
+item3.X-ABLabel:Owner (Facebook)
 X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/makerdavao
 NOTE:Digital Printing Service
 END:VCARD

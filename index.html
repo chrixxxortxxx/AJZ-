@@ -409,7 +409,8 @@ footer small { color: #8f8c86; font-size: 12px; }
   <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-owner" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></symbol>
+  <symbol id="i-check"viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
   <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
@@ -589,6 +590,13 @@ footer small { color: #8f8c86; font-size: 12px; }
           </a>
         </li>
         <li>
+          <a href="https://www.facebook.com/sonjin.ced" target="_blank" rel="noopener" aria-label="Owner's Facebook profile. Opens in a new tab">
+            <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-owner"/></svg></span>
+            <span><span class="label">Owner</span><span class="value">Owner's Facebook profile</span></span>
+            <svg class="i chev" aria-hidden="true"><use href="#i-chev"/></svg>
+          </a>
+        </li>
+        <li>
           <div class="static">
             <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></span>
             <span><span class="label">Hours</span><span class="value open">OPEN · CLOSES 10 PM</span><span class="note">Please contact us to confirm operating hours.</span></span>
@@ -651,7 +659,8 @@ footer small { color: #8f8c86; font-size: 12px; }
     city: 'Davao City',
     region: 'Davao del Sur',
     country: 'Philippines',
-    facebook: 'https://www.facebook.com/makerdavao'
+    facebook: 'https://www.facebook.com/makerdavao',
+    ownerFacebook: 'https://www.facebook.com/sonjin.ced'
   };
 
   // The card's own URL (no query string or hash, so QR/NFC/shared links stay clean).
@@ -692,6 +701,8 @@ footer small { color: #8f8c86; font-size: 12px; }
       'item1.X-ABLabel:Digital Card',
       'item2.URL:' + BIZ.facebook,
       'item2.X-ABLabel:Facebook',
+      'item3.URL:' + BIZ.ownerFacebook,
+      'item3.X-ABLabel:Owner (Facebook)',
       'X-SOCIALPROFILE;TYPE=facebook:' + BIZ.facebook,
       'NOTE:' + esc(BIZ.category + ' · Facebook: ' + BIZ.facebook),
       'END:VCARD'
@@ -714,7 +725,7 @@ footer small { color: #8f8c86; font-size: 12px; }
       'S.company=' + x(BIZ.name) + ';' +
       'S.job_title=' + x(BIZ.category) + ';' +
       'S.postal=' + x(BIZ.street + ', ' + BIZ.city + ', ' + BIZ.region + ', ' + BIZ.country) + ';' +
-      'S.notes=' + x(BIZ.category + '\nFacebook: ' + BIZ.facebook + (isWeb ? '\nDigital card: ' + CARD_URL : '')) + ';' +
+      'S.notes=' + x(BIZ.category + '\nFacebook: ' + BIZ.facebook + '\nOwner: ' + BIZ.ownerFacebook + (isWeb ? '\nDigital card: ' + CARD_URL : '')) + ';' +
       'S.browser_fallback_url=' + x(fallback) + ';end';
   }
 
