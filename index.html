@@ -222,19 +222,60 @@ main section:first-of-type { border-top: 0; }
 }
 .eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--accent); border-radius: 2px; }
 
-/* Services */
-.services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.services li {
-  background: var(--mist); border-radius: 14px; padding: 16px 14px;
-  border: 1px solid transparent;
+/* Services carousel */
+.svc-track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 84%; gap: 12px;
+  margin: 0 -20px; padding: 2px 20px 4px; list-style: none;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding: 0 20px;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
-.services .ico {
-  width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: var(--accent);
-  display: grid; place-items: center; margin-bottom: 10px;
+.svc-track::-webkit-scrollbar { display: none; }
+.svc {
+  scroll-snap-align: start; background: var(--mist); border-radius: 18px; overflow: hidden;
+  display: flex; flex-direction: column;
 }
-.services .ico svg.i { width: 18px; height: 18px; }
-.services h3 { margin: 0; font-size: 14px; font-weight: 750; letter-spacing: .2px; }
-.services p { margin: 3px 0 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
+.svc-media {
+  position: relative; margin: 0; aspect-ratio: 4 / 3; overflow: hidden;
+  background: linear-gradient(150deg, #232325, #0e0e0e);
+}
+.svc-fallback {
+  position: absolute; inset: 0; display: grid; place-items: center; color: var(--accent);
+}
+.svc-fallback svg.i { width: 54px; height: 54px; stroke-width: 1.4; }
+.svc-media button {
+  position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0;
+  background: none; cursor: zoom-in; border-radius: 0;
+}
+.svc-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.svc-media button:hover img { transform: scale(1.04); }
+.svc-num {
+  position: absolute; left: 12px; top: 12px; z-index: 1; pointer-events: none;
+  font-size: 11px; font-weight: 800; letter-spacing: 1.5px; color: #fff;
+  background: rgba(0,0,0,.55); padding: 4px 9px; border-radius: 999px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.svc-body { padding: 14px 16px 16px; }
+.svc h3 { margin: 0; font-size: 16px; font-weight: 750; letter-spacing: .2px; }
+.svc p { margin: 3px 0 0; font-size: 14px; color: var(--muted); line-height: 1.4; }
+.svc-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+.svc-arrow {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff;
+  color: var(--ink); display: grid; place-items: center; cursor: pointer;
+  transition: background-color .2s ease, opacity .2s ease;
+}
+.svc-arrow:hover { background: var(--mist); }
+.svc-arrow:disabled { opacity: .35; cursor: default; }
+.dots { display: flex; gap: 2px; }
+.dots button {
+  width: 24px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+  display: grid; place-items: center;
+}
+.dots button::before {
+  content: ""; width: 7px; height: 7px; border-radius: 999px; background: #cfcbc4;
+  transition: width .25s ease, background-color .25s ease;
+}
+.dots button[aria-current="true"]::before { width: 20px; background: var(--ink); }
 
 /* Gallery */
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -348,7 +389,6 @@ footer small { color: #8f8c86; font-size: 12px; }
 @media (max-width: 350px) {
   .hero h1 { font-size: 22px; }
   .row3 .btn { font-size: 10.5px; }
-  .services { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -417,12 +457,49 @@ footer small { color: #8f8c86; font-size: 12px; }
   <main>
     <section aria-labelledby="h-services">
       <h2 class="eyebrow" id="h-services">What we do</h2>
-      <ul class="services">
-        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-sign"/></svg></div><h3>Signage</h3><p>Custom signage services.</p></li>
-        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-print"/></svg></div><h3>Digital Printing</h3><p>Digital printing services.</p></li>
-        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-brief"/></svg></div><h3>Business Materials</h3><p>Printing and visual materials for businesses.</p></li>
-        <li><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-pen"/></svg></div><h3>Custom Projects</h3><p>Custom printing and signage requests.</p></li>
-      </ul>
+      <!-- Service photos: images/services/signage.jpg, digital-printing.jpg, business-materials.jpg,
+           custom-projects.jpg (landscape, ≈1200px wide, compressed). Until a photo exists the slide shows its icon. -->
+      <div role="region" aria-roledescription="carousel" aria-label="Our services">
+        <ul class="svc-track" id="svc-track">
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="1 of 4: Signage">
+            <figure class="svc-media">
+              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-sign"/></svg></div>
+              <button type="button" aria-label="View Signage photo full screen"><img src="images/services/signage.jpg" alt="Signage by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
+              <span class="svc-num" aria-hidden="true">01</span>
+            </figure>
+            <div class="svc-body"><h3>Signage</h3><p>Custom signage services.</p></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="2 of 4: Digital Printing">
+            <figure class="svc-media">
+              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-print"/></svg></div>
+              <button type="button" aria-label="View Digital Printing photo full screen"><img src="images/services/digital-printing.jpg" alt="Digital printing by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
+              <span class="svc-num" aria-hidden="true">02</span>
+            </figure>
+            <div class="svc-body"><h3>Digital Printing</h3><p>Digital printing services.</p></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="3 of 4: Business Materials">
+            <figure class="svc-media">
+              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-brief"/></svg></div>
+              <button type="button" aria-label="View Business Materials photo full screen"><img src="images/services/business-materials.jpg" alt="Business materials by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
+              <span class="svc-num" aria-hidden="true">03</span>
+            </figure>
+            <div class="svc-body"><h3>Business Materials</h3><p>Printing and visual materials for businesses.</p></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="4 of 4: Custom Projects">
+            <figure class="svc-media">
+              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-pen"/></svg></div>
+              <button type="button" aria-label="View Custom Projects photo full screen"><img src="images/services/custom-projects.jpg" alt="Custom project by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
+              <span class="svc-num" aria-hidden="true">04</span>
+            </figure>
+            <div class="svc-body"><h3>Custom Projects</h3><p>Custom printing and signage requests.</p></div>
+          </li>
+        </ul>
+        <div class="svc-nav">
+          <button class="svc-arrow" type="button" data-svc="prev" aria-label="Previous service"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+          <div class="dots" id="svc-dots"></div>
+          <button class="svc-arrow" type="button" data-svc="next" aria-label="Next service"><svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        </div>
+      </div>
     </section>
 
     <section aria-labelledby="h-work" id="work">
@@ -660,27 +737,87 @@ footer small { color: #8f8c86; font-size: 12px; }
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lb-img');
   var lbCount = document.getElementById('lb-count');
-  var current = 0, lastFocus = null;
-  function visible() { return items.filter(function (li) { return !li.hidden; }); }
+  var current = 0, lastFocus = null, lbList = [];
   function show(i) {
-    var list = visible();
-    if (!list.length) return;
-    current = (i + list.length) % list.length;
-    var src = list[current].querySelector('img');
+    if (!lbList.length) return;
+    current = (i + lbList.length) % lbList.length;
+    var src = lbList[current];
     lbImg.src = src.currentSrc || src.src;
     lbImg.alt = src.alt;
-    lbCount.textContent = (current + 1) + ' / ' + list.length;
-    var single = list.length < 2;
+    lbCount.textContent = (current + 1) + ' / ' + lbList.length;
+    var single = lbList.length < 2;
     lb.querySelector('.lb-prev').hidden = single;
     lb.querySelector('.lb-next').hidden = single;
+  }
+  // Opens the viewer on `imgs` (only those that actually loaded), starting at `start`.
+  function openLightbox(imgs, start, trigger) {
+    lbList = imgs.filter(function (img) { return img.isConnected && img.naturalWidth > 0; });
+    if (!lbList.length) return;
+    lastFocus = trigger;
+    show(Math.max(0, lbList.indexOf(start)));
+    if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
   }
   gallery.addEventListener('click', function (e) {
     var btn = e.target.closest('button');
     if (!btn) return;
-    lastFocus = btn;
-    show(visible().indexOf(btn.closest('li')));
-    if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
+    var imgs = items.filter(function (li) { return !li.hidden; }).map(function (li) { return li.querySelector('img'); });
+    openLightbox(imgs, btn.querySelector('img'), btn);
   });
+
+  /* ---------- Services carousel ---------- */
+  var track = document.getElementById('svc-track');
+  var slides = Array.prototype.slice.call(track.children);
+  var dotsBox = document.getElementById('svc-dots');
+  var prevBtn = document.querySelector('[data-svc="prev"]');
+  var nextBtn = document.querySelector('[data-svc="next"]');
+  var dots = slides.map(function (slide, i) {
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Go to ' + slide.querySelector('h3').textContent);
+    d.addEventListener('click', function () { goTo(i); });
+    dotsBox.appendChild(d);
+    return d;
+  });
+  // Remove the photo button for any service whose image doesn't exist yet; its icon shows instead.
+  slides.forEach(function (slide) {
+    var btn = slide.querySelector('.svc-media button');
+    var img = btn.querySelector('img');
+    function fail() { btn.remove(); }
+    if (img.complete && img.naturalWidth === 0 && img.currentSrc) fail();
+    else img.addEventListener('error', fail);
+    btn.addEventListener('click', function () {
+      var imgs = slides.map(function (s) { return s.querySelector('.svc-media img'); }).filter(Boolean);
+      openLightbox(imgs, img, btn);
+    });
+  });
+  function step() { return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth; }
+  function activeIndex() { return Math.min(slides.length - 1, Math.round(track.scrollLeft / step())); }
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: i * step(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+  function syncNav() {
+    var i = activeIndex();
+    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    if (atEnd) i = slides.length - 1;
+    dots.forEach(function (d, n) { d.setAttribute('aria-current', n === i ? 'true' : 'false'); });
+    prevBtn.disabled = track.scrollLeft <= 4;
+    nextBtn.disabled = atEnd;
+  }
+  var syncQueued = false;
+  track.addEventListener('scroll', function () {
+    if (syncQueued) return;
+    syncQueued = true;
+    requestAnimationFrame(function () { syncQueued = false; syncNav(); });
+  }, { passive: true });
+  prevBtn.addEventListener('click', function () { goTo(activeIndex() - 1); });
+  nextBtn.addEventListener('click', function () { goTo(activeIndex() + 1); });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activeIndex() + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activeIndex() - 1); }
+  });
+  window.addEventListener('resize', syncNav);
+  syncNav();
   function closeLb() { if (lb.close) lb.close(); else lb.removeAttribute('open'); }
   lb.addEventListener('close', function () { if (lastFocus) lastFocus.focus(); });
   lb.addEventListener('click', function (e) {
