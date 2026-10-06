@@ -5,8 +5,8 @@ A static site with no build step. Upload this folder to any static host (Netlify
 ## Before going live
 
 1. **Set the real URL.** In `index.html`, replace `https://yourdomain.com/ajz/` in the `og:` and `twitter:` meta tags with the real address. Facebook and Messenger only show the preview image when the URL is absolute.
-2. **Add photos (optional).** Put compressed JPGs (about 1200px wide, under 250 KB each) in `images/` as `work-1.jpg` … `work-6.jpg`, and update their `alt` text. Missing photos are hidden automatically. With no photos, the section links to Facebook instead.
-3. **Add the official logo (optional).** In `index.html`, swap the `AJZ` placeholder for the `<img>` line in the comment there.
+2. **Project photos.** The auto-playing carousel in "What we do" uses `images/work/01.jpg` … `08.jpg` (about 900px, under 150 KB each). To add a photo, copy a slide in `index.html` and change its image, caption and category. Slides with a missing photo are skipped automatically.
+3. **Logo.** The logo is `images/logo-ajz.png` (square, for the header) and `images/logo-ajz-wide.png` (for the middle of the QR code). If the logo changes, save it under a **new file name** and bump `CACHE` in `sw.js`, so phones that visited before load the new one instead of a cached copy.
 4. **Use HTTPS.** Offline support, clipboard copy and sharing all require it.
 
 ## NFC card and QR code

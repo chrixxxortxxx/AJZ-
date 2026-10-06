@@ -236,60 +236,50 @@ main section:first-of-type { border-top: 0; }
   display: flex; flex-direction: column;
 }
 .svc-media {
-  position: relative; margin: 0; aspect-ratio: 4 / 3; overflow: hidden;
-  background: linear-gradient(150deg, #232325, #0e0e0e);
+  position: relative; margin: 0; aspect-ratio: 1 / 1; overflow: hidden; background: #e9e6e1;
 }
-.svc-fallback {
-  position: absolute; inset: 0; display: grid; place-items: center; color: var(--accent);
-}
-.svc-fallback svg.i { width: 54px; height: 54px; stroke-width: 1.4; }
 .svc-media button {
   position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0;
   background: none; cursor: zoom-in; border-radius: 0;
 }
 .svc-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
 .svc-media button:hover img { transform: scale(1.04); }
-.svc-num {
+.svc-tag {
   position: absolute; left: 12px; top: 12px; z-index: 1; pointer-events: none;
-  font-size: 11px; font-weight: 800; letter-spacing: 1.5px; color: #fff;
-  background: rgba(0,0,0,.55); padding: 4px 9px; border-radius: 999px;
+  font-size: 11px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: #fff;
+  background: rgba(0,0,0,.6); padding: 5px 10px; border-radius: 999px;
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
-.svc-body { padding: 14px 16px 16px; }
-.svc h3 { margin: 0; font-size: 16px; font-weight: 750; letter-spacing: .2px; }
-.svc p { margin: 3px 0 0; font-size: 14px; color: var(--muted); line-height: 1.4; }
-.svc-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+.svc-body { padding: 12px 16px 14px; }
+.svc h3 { margin: 0; font-size: 15px; font-weight: 750; letter-spacing: .2px; }
+.svc-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.svc-controls { display: flex; gap: 6px; flex: none; }
 .svc-arrow {
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff;
-  color: var(--ink); display: grid; place-items: center; cursor: pointer;
+  color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0;
   transition: background-color .2s ease, opacity .2s ease;
 }
 .svc-arrow:hover { background: var(--mist); }
-.svc-arrow:disabled { opacity: .35; cursor: default; }
-.dots { display: flex; gap: 2px; }
+.svc-arrow svg.i { width: 18px; height: 18px; }
+.dots { display: flex; flex-wrap: wrap; min-width: 0; }
 .dots button {
-  width: 24px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+  width: 16px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
   display: grid; place-items: center;
 }
 .dots button::before {
-  content: ""; width: 7px; height: 7px; border-radius: 999px; background: #cfcbc4;
+  content: ""; width: 6px; height: 6px; border-radius: 999px; background: #cfcbc4;
   transition: width .25s ease, background-color .25s ease;
 }
-.dots button[aria-current="true"]::before { width: 20px; background: var(--ink); }
+.dots button[aria-current="true"] { width: 26px; }
+.dots button[aria-current="true"]::before { width: 18px; background: var(--ink); }
 
-/* Gallery */
-.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.gallery button {
-  display: block; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden;
-  aspect-ratio: 1 / 1; background: var(--mist); cursor: zoom-in;
+.svc-list { margin: 18px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.svc-list li {
+  display: flex; gap: 10px; align-items: flex-start; padding: 12px; border-radius: 14px; background: var(--mist);
+  font-size: 12.5px; color: var(--muted); line-height: 1.35;
 }
-.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
-.gallery button:hover img { transform: scale(1.04); }
-.gallery-empty {
-  margin: 0; padding: 22px 16px; border: 1.5px dashed var(--line); border-radius: 14px;
-  text-align: center; color: var(--muted); font-size: 14px;
-}
-.gallery-empty a { font-weight: 700; color: var(--ink); }
+.svc-list svg.i { width: 18px; height: 18px; color: var(--accent-ink); margin-top: 1px; }
+.svc-list strong { display: block; color: var(--ink); font-size: 13.5px; margin-bottom: 2px; }
 
 /* Reviews */
 .rating {
@@ -416,6 +406,8 @@ footer small { color: #8f8c86; font-size: 12px; }
   <symbol id="i-down" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
   <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M6 8.3a6 6 0 0 1 0 7.4"/><path d="M10 6a10 10 0 0 1 0 12"/><path d="M14 4a14 14 0 0 1 0 16"/><path d="M18 2a18 18 0 0 1 0 20"/></symbol>
 </svg>
@@ -423,7 +415,7 @@ footer small { color: #8f8c86; font-size: 12px; }
 <div class="card">
   <header class="hero">
     <div class="logo">
-      <img src="images/logo.jpg" alt="AJZ Signages Making Services logo" width="104" height="104" fetchpriority="high">
+      <img src="images/logo-ajz.png" alt="AJZ Signages Making Services logo" width="104" height="104" fetchpriority="high">
     </div>
     <h1>AJZ Signages Making Services</h1>
     <p class="tagline">Digital Printing Service</p>
@@ -457,66 +449,83 @@ footer small { color: #8f8c86; font-size: 12px; }
   <main>
     <section aria-labelledby="h-services">
       <h2 class="eyebrow" id="h-services">What we do</h2>
-      <!-- Service photos: images/services/signage.jpg, digital-printing.jpg, business-materials.jpg,
-           custom-projects.jpg (landscape, ≈1200px wide, compressed). Until a photo exists the slide shows its icon. -->
-      <div role="region" aria-roledescription="carousel" aria-label="Our services">
-        <ul class="svc-track" id="svc-track">
-          <li class="svc" role="group" aria-roledescription="slide" aria-label="1 of 4: Signage">
+      <!-- Project photos live in images/work/ (≈900px, compressed). To add one, copy a slide and change the
+           image, caption and category; the dots, autoplay and full-screen viewer pick it up automatically. -->
+      <div class="svc-carousel" role="region" aria-roledescription="carousel" aria-label="AJZ project photos">
+        <ul class="svc-track" id="svc-track" aria-live="off">
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="1 of 8: Trophies and medals">
             <figure class="svc-media">
-              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-sign"/></svg></div>
-              <button type="button" aria-label="View Signage photo full screen"><img src="images/services/signage.jpg" alt="Signage by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
-              <span class="svc-num" aria-hidden="true">01</span>
+              <button type="button" aria-label="View Trophies and medals photo full screen"><img src="images/work/01.jpg" alt="Basketball league trophies and medals made by AJZ Signages Making Services" decoding="async" width="828" height="620"></button>
+              <span class="svc-tag">Custom Projects</span>
             </figure>
-            <div class="svc-body"><h3>Signage</h3><p>Custom signage services.</p></div>
+            <div class="svc-body"><h3>Trophies &amp; Medals</h3></div>
           </li>
-          <li class="svc" role="group" aria-roledescription="slide" aria-label="2 of 4: Digital Printing">
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="2 of 8: Trophies">
             <figure class="svc-media">
-              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-print"/></svg></div>
-              <button type="button" aria-label="View Digital Printing photo full screen"><img src="images/services/digital-printing.jpg" alt="Digital printing by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
-              <span class="svc-num" aria-hidden="true">02</span>
+              <button type="button" aria-label="View Trophies photo full screen"><img src="images/work/02.jpg" alt="Champion and runner-up basketball trophies made by AJZ Signages Making Services" loading="lazy" decoding="async" width="675" height="900"></button>
+              <span class="svc-tag">Custom Projects</span>
             </figure>
-            <div class="svc-body"><h3>Digital Printing</h3><p>Digital printing services.</p></div>
+            <div class="svc-body"><h3>Trophies</h3></div>
           </li>
-          <li class="svc" role="group" aria-roledescription="slide" aria-label="3 of 4: Business Materials">
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="3 of 8: Hanging sign">
             <figure class="svc-media">
-              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-brief"/></svg></div>
-              <button type="button" aria-label="View Business Materials photo full screen"><img src="images/services/business-materials.jpg" alt="Business materials by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
-              <span class="svc-num" aria-hidden="true">03</span>
+              <button type="button" aria-label="View Hanging sign photo full screen"><img src="images/work/03.jpg" alt="Wooden hanging sign for The Berries Farm Cabins and Restaurant" loading="lazy" decoding="async" width="675" height="900"></button>
+              <span class="svc-tag">Signage</span>
             </figure>
-            <div class="svc-body"><h3>Business Materials</h3><p>Printing and visual materials for businesses.</p></div>
+            <div class="svc-body"><h3>Hanging Sign</h3></div>
           </li>
-          <li class="svc" role="group" aria-roledescription="slide" aria-label="4 of 4: Custom Projects">
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="4 of 8: Wall lettering">
             <figure class="svc-media">
-              <div class="svc-fallback" aria-hidden="true"><svg class="i"><use href="#i-pen"/></svg></div>
-              <button type="button" aria-label="View Custom Projects photo full screen"><img src="images/services/custom-projects.jpg" alt="Custom project by AJZ Signages Making Services" loading="lazy" decoding="async" width="800" height="600"></button>
-              <span class="svc-num" aria-hidden="true">04</span>
+              <button type="button" aria-label="View Wall lettering photo full screen"><img src="images/work/04.jpg" alt="3D wall lettering for Technolux Equipment and Supply Corporation" loading="lazy" decoding="async" width="900" height="675"></button>
+              <span class="svc-tag">Signage</span>
             </figure>
-            <div class="svc-body"><h3>Custom Projects</h3><p>Custom printing and signage requests.</p></div>
+            <div class="svc-body"><h3>Wall Lettering</h3></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="5 of 8: Storefront lettering">
+            <figure class="svc-media">
+              <button type="button" aria-label="View Storefront lettering photo full screen"><img src="images/work/05.jpg" alt="AJZ team installing 3D storefront letters on a cafe" loading="lazy" decoding="async" width="675" height="900"></button>
+              <span class="svc-tag">Signage</span>
+            </figure>
+            <div class="svc-body"><h3>Storefront Lettering</h3></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="6 of 8: Lighted signage">
+            <figure class="svc-media">
+              <button type="button" aria-label="View Lighted signage photo full screen"><img src="images/work/06.jpg" alt="Lighted Food Trip wall sign being installed by AJZ" loading="lazy" decoding="async" width="675" height="900"></button>
+              <span class="svc-tag">Signage</span>
+            </figure>
+            <div class="svc-body"><h3>Lighted Signage</h3></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="7 of 8: Round wall sign">
+            <figure class="svc-media">
+              <button type="button" aria-label="View Round wall sign photo full screen"><img src="images/work/07.jpg" alt="Round pink and gold wall sign for 4 Maidens Beauty Haven" loading="lazy" decoding="async" width="900" height="748"></button>
+              <span class="svc-tag">Signage</span>
+            </figure>
+            <div class="svc-body"><h3>Round Wall Sign</h3></div>
+          </li>
+          <li class="svc" role="group" aria-roledescription="slide" aria-label="8 of 8: Podium with logo">
+            <figure class="svc-media">
+              <button type="button" aria-label="View Podium with logo photo full screen"><img src="images/work/08.jpg" alt="Clear podium with ACLC College of Butuan logo" loading="lazy" decoding="async" width="450" height="900"></button>
+              <span class="svc-tag">Custom Projects</span>
+            </figure>
+            <div class="svc-body"><h3>Podium with Logo</h3></div>
           </li>
         </ul>
         <div class="svc-nav">
-          <button class="svc-arrow" type="button" data-svc="prev" aria-label="Previous service"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
           <div class="dots" id="svc-dots"></div>
-          <button class="svc-arrow" type="button" data-svc="next" aria-label="Next service"><svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="svc-controls">
+            <button class="svc-arrow" type="button" id="svc-play" aria-label="Pause slideshow"><svg class="i" aria-hidden="true"><use href="#i-pause"/></svg></button>
+            <button class="svc-arrow" type="button" data-svc="prev" aria-label="Previous photo"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <button class="svc-arrow" type="button" data-svc="next" aria-label="Next photo"><svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section aria-labelledby="h-work" id="work">
-      <h2 class="eyebrow" id="h-work">Our work</h2>
-      <!-- Add AJZ photos to the images/ folder as work-1.jpg … work-6.jpg (≈1200px wide, compressed).
-           Missing photos are hidden automatically. Update alt text to describe each photo. -->
-      <ul class="gallery" id="gallery">
-        <li><button type="button" aria-label="View photo 1 full screen"><img src="images/work-1.jpg" alt="AJZ Signages Making Services work sample 1" loading="lazy" decoding="async" width="600" height="600"></button></li>
-        <li><button type="button" aria-label="View photo 2 full screen"><img src="images/work-2.jpg" alt="AJZ Signages Making Services work sample 2" loading="lazy" decoding="async" width="600" height="600"></button></li>
-        <li><button type="button" aria-label="View photo 3 full screen"><img src="images/work-3.jpg" alt="AJZ Signages Making Services work sample 3" loading="lazy" decoding="async" width="600" height="600"></button></li>
-        <li><button type="button" aria-label="View photo 4 full screen"><img src="images/work-4.jpg" alt="AJZ Signages Making Services work sample 4" loading="lazy" decoding="async" width="600" height="600"></button></li>
-        <li><button type="button" aria-label="View photo 5 full screen"><img src="images/work-5.jpg" alt="AJZ Signages Making Services work sample 5" loading="lazy" decoding="async" width="600" height="600"></button></li>
-        <li><button type="button" aria-label="View photo 6 full screen"><img src="images/work-6.jpg" alt="AJZ Signages Making Services work sample 6" loading="lazy" decoding="async" width="600" height="600"></button></li>
+      <ul class="svc-list">
+        <li><svg class="i" aria-hidden="true"><use href="#i-sign"/></svg><span><strong>Signage</strong>Custom signage services.</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-print"/></svg><span><strong>Digital Printing</strong>Digital printing services.</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-brief"/></svg><span><strong>Business Materials</strong>Printing and visual materials for businesses.</span></li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-pen"/></svg><span><strong>Custom Projects</strong>Custom printing and signage requests.</span></li>
       </ul>
-      <p class="gallery-empty" id="gallery-empty" hidden>
-        See our latest projects on <a href="https://www.facebook.com/sonjin.ced" target="_blank" rel="noopener">Facebook</a>.
-      </p>
     </section>
 
     <section aria-labelledby="h-reviews">
@@ -717,23 +726,7 @@ footer small { color: #8f8c86; font-size: 12px; }
     copyText(CARD_URL).then(function () { notify('Link copied!'); }, function () { notify(CARD_URL); });
   }
 
-  /* ---------- Gallery + lightbox ---------- */
-  var gallery = document.getElementById('gallery');
-  var items = Array.prototype.slice.call(gallery.querySelectorAll('li'));
-  function checkEmpty() {
-    if (!gallery.querySelector('li:not([hidden])')) {
-      gallery.hidden = true;
-      document.getElementById('gallery-empty').hidden = false;
-    }
-  }
-  // Hide any photo slot whose image file doesn't exist yet.
-  items.forEach(function (li) {
-    var img = li.querySelector('img');
-    function fail() { li.hidden = true; checkEmpty(); }
-    if (img.complete && img.naturalWidth === 0 && img.currentSrc) fail();
-    else img.addEventListener('error', fail);
-  });
-
+  /* ---------- Lightbox ---------- */
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lb-img');
   var lbCount = document.getElementById('lb-count');
@@ -757,67 +750,6 @@ footer small { color: #8f8c86; font-size: 12px; }
     show(Math.max(0, lbList.indexOf(start)));
     if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
   }
-  gallery.addEventListener('click', function (e) {
-    var btn = e.target.closest('button');
-    if (!btn) return;
-    var imgs = items.filter(function (li) { return !li.hidden; }).map(function (li) { return li.querySelector('img'); });
-    openLightbox(imgs, btn.querySelector('img'), btn);
-  });
-
-  /* ---------- Services carousel ---------- */
-  var track = document.getElementById('svc-track');
-  var slides = Array.prototype.slice.call(track.children);
-  var dotsBox = document.getElementById('svc-dots');
-  var prevBtn = document.querySelector('[data-svc="prev"]');
-  var nextBtn = document.querySelector('[data-svc="next"]');
-  var dots = slides.map(function (slide, i) {
-    var d = document.createElement('button');
-    d.type = 'button';
-    d.setAttribute('aria-label', 'Go to ' + slide.querySelector('h3').textContent);
-    d.addEventListener('click', function () { goTo(i); });
-    dotsBox.appendChild(d);
-    return d;
-  });
-  // Remove the photo button for any service whose image doesn't exist yet; its icon shows instead.
-  slides.forEach(function (slide) {
-    var btn = slide.querySelector('.svc-media button');
-    var img = btn.querySelector('img');
-    function fail() { btn.remove(); }
-    if (img.complete && img.naturalWidth === 0 && img.currentSrc) fail();
-    else img.addEventListener('error', fail);
-    btn.addEventListener('click', function () {
-      var imgs = slides.map(function (s) { return s.querySelector('.svc-media img'); }).filter(Boolean);
-      openLightbox(imgs, img, btn);
-    });
-  });
-  function step() { return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth; }
-  function activeIndex() { return Math.min(slides.length - 1, Math.round(track.scrollLeft / step())); }
-  function goTo(i) {
-    i = Math.max(0, Math.min(slides.length - 1, i));
-    track.scrollTo({ left: i * step(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  }
-  function syncNav() {
-    var i = activeIndex();
-    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-    if (atEnd) i = slides.length - 1;
-    dots.forEach(function (d, n) { d.setAttribute('aria-current', n === i ? 'true' : 'false'); });
-    prevBtn.disabled = track.scrollLeft <= 4;
-    nextBtn.disabled = atEnd;
-  }
-  var syncQueued = false;
-  track.addEventListener('scroll', function () {
-    if (syncQueued) return;
-    syncQueued = true;
-    requestAnimationFrame(function () { syncQueued = false; syncNav(); });
-  }, { passive: true });
-  prevBtn.addEventListener('click', function () { goTo(activeIndex() - 1); });
-  nextBtn.addEventListener('click', function () { goTo(activeIndex() + 1); });
-  track.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activeIndex() + 1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activeIndex() - 1); }
-  });
-  window.addEventListener('resize', syncNav);
-  syncNav();
   function closeLb() { if (lb.close) lb.close(); else lb.removeAttribute('open'); }
   lb.addEventListener('close', function () { if (lastFocus) lastFocus.focus(); });
   lb.addEventListener('click', function (e) {
@@ -840,13 +772,104 @@ footer small { color: #8f8c86; font-size: 12px; }
     touchX = null;
   });
 
-  /* ---------- QR code (library loaded lazily, only when the section scrolls into view) ---------- */
+  /* ---------- Project photo carousel (auto-advancing) ---------- */
+  var carousel = document.querySelector('.svc-carousel');
+  var track = document.getElementById('svc-track');
+  var slides = Array.prototype.slice.call(track.children);
+  var dotsBox = document.getElementById('svc-dots');
+  var playBtn = document.getElementById('svc-play');
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dots = slides.map(function (slide, i) {
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Show photo ' + (i + 1) + ': ' + slide.querySelector('h3').textContent);
+    d.addEventListener('click', function () { nudge(); goTo(i); });
+    dotsBox.appendChild(d);
+    return d;
+  });
+  // Drop any slide whose photo is missing, so the carousel never shows a broken image.
+  slides.forEach(function (slide) {
+    var btn = slide.querySelector('.svc-media button');
+    var img = btn.querySelector('img');
+    function fail() {
+      var i = slides.indexOf(slide);
+      if (i < 0) return;
+      slides.splice(i, 1); dots.splice(i, 1)[0].remove(); slide.remove(); syncNav();
+    }
+    if (img.complete && img.naturalWidth === 0 && img.currentSrc) fail();
+    else img.addEventListener('error', fail);
+    btn.addEventListener('click', function () {
+      openLightbox(slides.map(function (s) { return s.querySelector('img'); }), img, btn);
+    });
+  });
+  function step() { return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth; }
+  function atEnd() { return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; }
+  function activeIndex() { return atEnd() ? slides.length - 1 : Math.min(slides.length - 1, Math.round(track.scrollLeft / step())); }
+  function goTo(i) {
+    if (!slides.length) return;
+    i = (i + slides.length) % slides.length;
+    track.scrollTo({ left: i * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+  function syncNav() {
+    var i = activeIndex();
+    dots.forEach(function (d, n) { d.setAttribute('aria-current', n === i ? 'true' : 'false'); });
+  }
+  track.addEventListener('scroll', syncNav, { passive: true });
+  document.querySelector('[data-svc="prev"]').addEventListener('click', function () { nudge(); goTo(activeIndex() - 1); });
+  document.querySelector('[data-svc="next"]').addEventListener('click', function () { nudge(); goTo(activeIndex() + 1); });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); nudge(); goTo(activeIndex() + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(); goTo(activeIndex() - 1); }
+  });
+  window.addEventListener('resize', syncNav);
+  syncNav();
+
+  // Autoplay: advances every few seconds, loops, and waits while the visitor is
+  // touching, hovering, focused inside it, viewing a photo, or has it scrolled out of view.
+  var DELAY = 3500, IDLE_AFTER_TOUCH = 6000;
+  var paused = reduceMotion, hovering = false, focused = false, touching = false, inView = true, lastNudge = 0;
+  function nudge() { lastNudge = Date.now(); }
+  function setPaused(p) {
+    paused = p;
+    playBtn.setAttribute('aria-label', p ? 'Play slideshow' : 'Pause slideshow');
+    playBtn.querySelector('use').setAttribute('href', p ? '#i-play' : '#i-pause');
+  }
+  setPaused(paused);
+  playBtn.addEventListener('click', function () { setPaused(!paused); nudge(); });
+  carousel.addEventListener('mouseenter', function () { hovering = true; });
+  carousel.addEventListener('mouseleave', function () { hovering = false; });
+  carousel.addEventListener('focusin', function () { focused = true; });
+  carousel.addEventListener('focusout', function (e) { if (!carousel.contains(e.relatedTarget)) focused = false; });
+  track.addEventListener('touchstart', function () { touching = true; nudge(); }, { passive: true });
+  track.addEventListener('touchend', function () { touching = false; nudge(); }, { passive: true });
+  track.addEventListener('pointerdown', nudge);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { inView = en[0].isIntersecting; }, { threshold: 0.3 }).observe(track);
+  }
+  setInterval(function () {
+    if (paused || hovering || focused || touching || !inView || document.hidden || lb.open) return;
+    if (Date.now() - lastNudge < IDLE_AFTER_TOUCH) return;
+    goTo(activeIndex() + 1);
+  }, DELAY);
+
+  /* ---------- QR code with AJZ logo (library loaded lazily, when the section scrolls into view) ---------- */
   var qrCanvas = document.getElementById('qr');
   var qrReady = false;
   document.getElementById('qr-url').textContent = CARD_URL.replace(/^https?:\/\//, '');
 
+  var qrLogo = new Image();
+  var qrLogoState = 'loading';
+  qrLogo.onload = function () { qrLogoState = 'ok'; if (qrReady) drawQR(qrCanvas, 400); };
+  qrLogo.onerror = function () { qrLogoState = 'none'; };
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
   function drawQR(canvas, size) {
-    var qr = window.qrcode(0, 'M');
+    // Level H error correction (30%) so the logo in the middle doesn't stop it scanning.
+    var qr = window.qrcode(0, 'H');
     qr.addData(CARD_URL);
     qr.make();
     var n = qr.getModuleCount();
@@ -860,8 +883,20 @@ footer small { color: #8f8c86; font-size: 12px; }
     for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) {
       if (qr.isDark(r, c)) ctx.fillRect((c + quiet) * cell, (r + quiet) * cell, cell, cell);
     }
+    if (qrLogoState === 'ok') {
+      // Logo covers ~5% of the code area, well inside what level H can recover.
+      var lw = Math.round(n * cell * 0.32);
+      var lh = Math.round(lw * qrLogo.naturalHeight / qrLogo.naturalWidth);
+      var pad = Math.round(cell * 0.8);
+      var lx = Math.round((dim - lw) / 2), ly = Math.round((dim - lh) / 2);
+      ctx.fillStyle = '#ffffff';
+      roundRect(ctx, lx - pad, ly - pad, lw + pad * 2, lh + pad * 2, pad * 1.5);
+      ctx.fill();
+      ctx.drawImage(qrLogo, lx, ly, lw, lh);
+    }
   }
   function loadQR(cb) {
+    if (qrLogoState === 'loading' && !qrLogo.src) qrLogo.src = 'images/logo-ajz-wide.png';
     if (window.qrcode) return cb();
     var s = document.createElement('script');
     s.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
@@ -886,11 +921,15 @@ footer small { color: #8f8c86; font-size: 12px; }
     loadQR(function () {
       var big = document.createElement('canvas');
       drawQR(big, 1200);
-      var a = document.createElement('a');
-      a.download = 'AJZ-Digital-Card-QR.png';
-      a.href = big.toDataURL('image/png');
-      document.body.appendChild(a); a.click(); a.remove();
-      notify('QR code downloaded');
+      try {
+        var a = document.createElement('a');
+        a.download = 'AJZ-Digital-Card-QR.png';
+        a.href = big.toDataURL('image/png');
+        document.body.appendChild(a); a.click(); a.remove();
+        notify('QR code downloaded');
+      } catch (err) {
+        notify('Open the live website to download the QR code');
+      }
     });
   }
 
