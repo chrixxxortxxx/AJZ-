@@ -1,7 +1,7 @@
 // Offline fallback for the AJZ digital card.
 // Pages: network first (so updates show immediately), cached copy when offline.
 // Static assets: cache first.
-const CACHE = 'ajz-card-v5';
+const CACHE = 'ajz-card-v6';
 const CORE = [
   './',
   'index.html',
@@ -28,6 +28,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
+  // Live data (Google reviews) always goes to the network; never serve it from cache.
+  if (new URL(req.url).pathname.startsWith('/api/')) return;
 
   if (req.mode === 'navigate') {
     event.respondWith(

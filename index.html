@@ -302,6 +302,19 @@ main section:first-of-type { border-top: 0; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
 .tags li { font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; background: var(--ink); color: #fff; letter-spacing: .3px; }
 
+.g-attr { margin: 10px 0 0; font-size: 12.5px; color: var(--muted); }
+.g-attr a { color: var(--ink); font-weight: 700; }
+.reviews .rv-text {
+  display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+}
+.reviews .rv-meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.reviews .rv-meta cite { margin: 0; }
+.reviews .rv-meta cite a { color: inherit; text-decoration: none; }
+.reviews .rv-meta cite a:hover { text-decoration: underline; }
+.reviews .rv-stars { display: inline-flex; gap: 1px; color: var(--accent); }
+.reviews .rv-stars svg.i { width: 12px; height: 12px; }
+.reviews .rv-stars .off { color: #d9d5ce; }
+.reviews .rv-when { font-size: 12px; color: var(--muted); }
 .review-cta { margin-top: 18px; padding: 16px; border-radius: 16px; border: 1px solid var(--line); text-align: center; }
 .review-cta p { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
 
@@ -426,7 +439,7 @@ footer small { color: #8f8c86; font-size: 12px; }
     <p class="tagline">Digital Printing Service</p>
     <ul class="meta">
       <li><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Agdao, Davao City</li>
-      <li><svg class="i fill star" aria-hidden="true"><use href="#i-star"/></svg><span><strong>4.1</strong> · 10 Reviews</span></li>
+      <li><svg class="i fill star" aria-hidden="true"><use href="#i-star"/></svg><span><strong data-g="rating">4.1</strong> · <span data-g="count-short">10 Reviews</span></span></li>
     </ul>
 
     <nav class="actions" aria-label="Contact actions">
@@ -536,23 +549,24 @@ footer small { color: #8f8c86; font-size: 12px; }
     <section aria-labelledby="h-reviews">
       <h2 class="eyebrow" id="h-reviews">Customer reviews</h2>
       <div class="rating">
-        <span class="score">4.1</span>
+        <span class="score" data-g="rating">4.1</span>
         <div>
-          <div class="stars" role="img" aria-label="Rated 4.1 out of 5 stars">
+          <div class="stars" id="g-stars" role="img" aria-label="Rated 4.1 out of 5 stars">
             <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
             <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
             <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
             <svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg>
             <svg class="i fill half" aria-hidden="true"><use href="#i-star"/></svg>
           </div>
-          <small>10 Google Reviews</small>
+          <small data-g="count-long">10 Google Reviews</small>
         </div>
       </div>
-      <ul class="reviews">
+      <ul class="reviews" id="g-reviews">
         <li><blockquote><p>“Very Legit and Affordable, highly recommended!”</p><cite>— Roxelle Bacasmo</cite></blockquote></li>
         <li><blockquote><p>“Very affordable, Quality is good, and highly recommended.”</p><cite>— JANDY OTERO</cite></blockquote></li>
         <li><blockquote><p>“Affordable, legit and trusted shop ever!”</p><cite>— Kristine May Bacasmo</cite></blockquote></li>
       </ul>
+      <p class="g-attr">Reviews from Google · <a id="g-all" href="https://www.google.com/maps/search/?api=1&amp;query=AJZ%20Signages%20Making%20Services&amp;query_place_id=ChIJmavX9bdt-TIRU0ZzeXdjrwc" target="_blank" rel="noopener">See all reviews on Google</a></p>
       <ul class="tags" aria-label="What customers say">
         <li>Affordable</li><li>Quality</li><li>Legit</li><li>Trusted</li><li>Highly recommended</li>
       </ul>
@@ -776,6 +790,88 @@ footer small { color: #8f8c86; font-size: 12px; }
   }
   function fallbackCopy() {
     copyText(CARD_URL).then(function () { notify('Link copied!'); }, function () { notify(CARD_URL); });
+  }
+
+  /* ---------- Live Google rating + reviews (from /api/reviews; static text stays if it fails) ---------- */
+  function starRow(cls, value, size) {
+    var wrap = document.createElement('span');
+    wrap.className = cls;
+    var on = Math.round(value);
+    for (var i = 1; i <= 5; i++) {
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'i fill' + (i <= on ? '' : (size ? ' half' : ' off')));
+      svg.setAttribute('aria-hidden', 'true');
+      var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', '#i-star');
+      svg.appendChild(use);
+      wrap.appendChild(svg);
+    }
+    return wrap;
+  }
+  function safeUrl(u) { return /^https:\/\//.test(u || '') ? u : ''; }
+  function applyReviews(d) {
+    if (!d || typeof d.rating !== 'number' || !d.count) return;
+    var rating = d.rating.toFixed(1);
+    var plural = d.count === 1 ? '' : 's';
+    document.querySelectorAll('[data-g="rating"]').forEach(function (el) { el.textContent = rating; });
+    document.querySelectorAll('[data-g="count-short"]').forEach(function (el) { el.textContent = d.count + ' Review' + plural; });
+    document.querySelectorAll('[data-g="count-long"]').forEach(function (el) { el.textContent = d.count + ' Google Review' + plural; });
+
+    var stars = document.getElementById('g-stars');
+    var fresh = starRow('stars', d.rating, true);
+    stars.replaceChildren.apply(stars, Array.prototype.slice.call(fresh.childNodes));
+    stars.setAttribute('aria-label', 'Rated ' + rating + ' out of 5 stars');
+
+    if (safeUrl(d.mapsUrl)) document.getElementById('g-all').href = d.mapsUrl;
+
+    var list = (d.reviews || []).slice(0, 3);
+    if (!list.length) return;
+    var ul = document.getElementById('g-reviews');
+    var items = list.map(function (rv) {
+      var li = document.createElement('li');
+      var bq = document.createElement('blockquote');
+      var p = document.createElement('p');
+      p.className = 'rv-text';
+      p.textContent = '“' + rv.text.trim() + '”';
+      var meta = document.createElement('div');
+      meta.className = 'rv-meta';
+      var cite = document.createElement('cite');
+      var name = '— ' + (rv.author || 'Google user');
+      if (safeUrl(rv.authorUrl)) {
+        var a = document.createElement('a');
+        a.href = rv.authorUrl; a.target = '_blank'; a.rel = 'noopener nofollow';
+        a.textContent = name;
+        cite.appendChild(a);
+      } else {
+        cite.textContent = name;
+      }
+      meta.appendChild(cite);
+      if (typeof rv.rating === 'number') {
+        var s = starRow('rv-stars', rv.rating, false);
+        s.setAttribute('role', 'img');
+        s.setAttribute('aria-label', rv.rating + ' out of 5 stars');
+        meta.appendChild(s);
+      }
+      if (rv.when) {
+        var w = document.createElement('span');
+        w.className = 'rv-when';
+        w.textContent = rv.when;
+        meta.appendChild(w);
+      }
+      bq.appendChild(p); bq.appendChild(meta); li.appendChild(bq);
+      return li;
+    });
+    ul.replaceChildren.apply(ul, items);
+  }
+  if (isWeb) {
+    var loadReviews = function () {
+      fetch('/api/reviews', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(applyReviews)
+        .catch(function () {});
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadReviews, { timeout: 2500 });
+    else setTimeout(loadReviews, 800);
   }
 
   /* ---------- Lightbox ---------- */

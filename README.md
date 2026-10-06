@@ -1,20 +1,33 @@
 # AJZ Digital Calling Card
 
-A static site with no build step. Upload this folder to any static host (Netlify, Vercel, GitHub Pages, Cloudflare Pages, or your own hosting) under a short path like `yourdomain.com/ajz/`.
+Live at **https://ajz-services.vercel.app/**. It deploys automatically from the `main` branch of `chrixxxortxxx/AJZ-` on GitHub.
 
-## Before going live
+It's a static page (`index.html`) plus one small Vercel function (`api/reviews.js`) for live Google reviews. There's no build step.
 
-1. **Set the real URL.** In `index.html`, replace `https://yourdomain.com/ajz/` in the `og:` and `twitter:` meta tags with the real address. Facebook and Messenger only show the preview image when the URL is absolute.
-2. **Project photos.** The auto-playing carousel in "What we do" uses `images/work/01.jpg` … `08.jpg` (about 900px, under 150 KB each). To add a photo, copy a slide in `index.html` and change its image, caption and category. Slides with a missing photo are skipped automatically.
-3. **Logo.** The logo is `images/logo-ajz.png` (square, for the header) and `images/logo-ajz-wide.png` (for the middle of the QR code). If the logo changes, save it under a **new file name** and bump `CACHE` in `sw.js`, so phones that visited before load the new one instead of a cached copy.
-4. **Use HTTPS.** Offline support, clipboard copy and sharing all require it.
+## Live Google reviews (one-time setup)
+
+The rating, review count and latest reviews update automatically from Google once an API key is added. Until then, the page shows the built-in 4.1 ★ / 10 reviews.
+
+1. Go to <https://console.cloud.google.com/>, create a project (for example "AJZ card") and **add a billing account**. Google requires one, but this site's usage stays inside the monthly free allowance: Vercel asks Google at most about once an hour, roughly 720 times a month.
+2. Open **APIs & Services → Library**, search for **Places API (New)** and click **Enable**.
+3. Open **APIs & Services → Credentials → Create credentials → API key**. Edit the key and, under **API restrictions**, choose **Restrict key → Places API (New)**. Save.
+4. In Vercel, open the project, then **Settings → Environment Variables**. Add `GOOGLE_PLACES_API_KEY` with the key as its value, for **Production** (and Preview if you like).
+5. In Vercel, go to **Deployments**, open the ⋯ menu on the latest deployment and choose **Redeploy**.
+6. Check it: <https://ajz-services.vercel.app/api/reviews> should return JSON with `rating`, `count` and `reviews`.
+
+Notes:
+- Google's API returns up to 5 reviews, chosen by Google. The page shows the 3 newest of them.
+- New reviews appear within about an hour.
+- The key stays on the server. It never appears in the page, and the function only looks up AJZ's place.
 
 ## NFC card and QR code
 
-- Write the card URL (for example `https://yourdomain.com/ajz/`) to the NFC tag as a **URI / URL record**. Any NFC writer app works, such as NXP TagWriter or NFC Tools. Phones open it without a special app.
-- After deploying, open the live site and tap **Download QR Code** to get a 1200px PNG for printing. The QR code always encodes the URL the page is served from, so open the final domain before downloading.
+- Write `https://ajz-services.vercel.app/` to the NFC tag as a **URI / URL record**. Any NFC writer app works, such as NXP TagWriter or NFC Tools. Phones open it without a special app.
+- Open the live site and tap **Download QR Code** to get a 1200px PNG with the AJZ logo in the middle. Test-scan the printed version before printing many.
 - The QR code and NFC tag only hold the URL. Changes to the page appear without reprinting the cards.
 
-## Updating later
+## Updating content
 
-When you change `index.html`, bump `CACHE` in `sw.js` (for example `ajz-card-v2`) so returning visitors get fresh files. Pages load network-first, so online visitors always see the latest version.
+- **Project photos:** the carousel in "What we do" uses `images/work/01.jpg` … `08.jpg` (about 900px, under 150 KB each). To add a photo, copy a slide in `index.html` and change its image, caption and category.
+- **Logo:** `images/logo-ajz.png` (square) and `images/logo-ajz-wide.png` (QR centre). If the logo changes, save it under a **new file name** so phones don't keep an old cached copy.
+- **After any change,** bump `CACHE` in `sw.js` (for example `ajz-card-v7`). Pages load network-first and `vercel.json` sends `no-cache` for the page, so visitors get updates on their next tap.
